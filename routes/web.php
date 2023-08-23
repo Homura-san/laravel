@@ -17,14 +17,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('clients', function() {
+# Rotas de estudo
+
+Route::get('clients/list', function() {
     return '<h1> lista de clientes</h1>';
-});
+})-> name('clients.list'); // O nome da rota pode ser qualquer nome
+
+/*
+    Quando se chama uma rota pelo nome, o endereço pode ser alterado
+    à vontade.
+*/
 
 Route::get('clients/create/new', function() {
-    return '<h1> Criar clientes</h1>';
+    $html = '<h1>Criar cliente</h1>';
+    $html .= '<br><a href="' . route('clients.list') . '"> Lista de Clientes</a>';
+    return $html;
 });
 
 Route::get('clients/{name}/{age}', function ($name, $age) {
-    return "Detalhes do cliente {$name}, {$age} anos.";
-})->where('age', '[0-9]+');
+    $html =  "Detalhes do cliente {$name}, {$age} anos.";
+    $html .= '<br><a href="' . route('clients.list') . '"> Lista de Clientes</a>';
+    return $html;
+})->where(['age' => '[0-9]+', 'name' => '[A-Za-z]+']);
