@@ -48,7 +48,9 @@ Route::prefix('clients')->group(function () {
         return $html;
     });
     
-    Route::post('save', function () {
+    # match - aceita determinados verbos http, usar com cautela
+    # any  - aceita qualquer verbo http, mas deve ser usado em último caso
+    Route::match(['post', 'put'] ,'save', function () {
         return 'Cliente criado com sucesso.';
     })->name('clients.save');
 
