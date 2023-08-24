@@ -19,9 +19,11 @@ Route::get('/', function () {
 
 # Rotas de estudo
 
+Route::redirect('curso', 'clients', 301);
+
 Route::prefix('clients')->group(function () {
     Route::get('/', function() {
-        return '<h1> lista de clientes</h1>';
+        return '<h1> lista de clientes</h1>' . dd(Route::current());
     })-> name('clients.list'); // O nome da rota pode ser qualquer nome
     
     /*
