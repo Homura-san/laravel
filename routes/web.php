@@ -32,22 +32,7 @@ Route::prefix('clients')->group(function () {
     */
     
     Route::get('create/new', function() {
-        $html = '<h1>Criar cliente</h1>';
-        
-        $link = route('clients.save');
-
-        $html .= "
-        <br>
-        <form method='POST' action='{$link}'>
-            <input type='hidden' name='_token' value='" . csrf_token() . "'>
-            <!-- <input type='hidden' name='_method' value='PUT'> Como usar método put, delete, etc -->
-            <input placeholder='insira seu nome'> <br>
-            <input placeholder='insira sua idade'> <br>
-            <button>Enviar</button>
-        </form>";
-        
-        $html .= '<br><a href="' . route('clients.list') . '"> Lista de Clientes</a>';
-        return $html;
+        return view('clients.form');
     });
     
     # match - aceita determinados verbos http, usar com cautela
