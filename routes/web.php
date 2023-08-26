@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    #return view('welcome');
+    return view('index');
 });
 
 # Rotas de estudo
@@ -23,7 +24,7 @@ Route::redirect('curso', 'clients', 301);
 
 Route::prefix('clients')->group(function () {
     Route::get('/', function() {
-        return '<h1> lista de clientes</h1>' . dd(Route::current());
+        return view('clients.index');
     })-> name('clients.list'); // O nome da rota pode ser qualquer nome
     
     /*
@@ -33,7 +34,7 @@ Route::prefix('clients')->group(function () {
     
     Route::get('create/new', function() {
         return view('clients.form');
-    });
+    })-> name('form-clients');
     
     # match - aceita determinados verbos http, usar com cautela
     # any  - aceita qualquer verbo http, mas deve ser usado em último caso
