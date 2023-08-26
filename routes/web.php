@@ -25,10 +25,10 @@ Route::redirect('curso', 'clients', 301);
 Route::prefix('clients')->group(function () {
     Route::get('/', function() {
 
-        $client = 'Joao';
-        $group = 'Atacado';
+        $clients = ['Maria', 'Joao', 'Joaquim'];
+        $group = 'Restaurante';
 
-        return view('clients.index', compact('client', 'group'));
+        return view('clients.index', compact('clients', 'group'));
     })-> name('clients.list'); // O nome da rota pode ser qualquer nome
     
     /*

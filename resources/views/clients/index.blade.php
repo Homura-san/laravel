@@ -6,4 +6,22 @@
 <br>
 {{-- Comentário do blade --}}
 
-{{ $client }} -- {{ $group;}}
+{{ $group;}}
+
+@if ($group == 'Restaurante')
+    <p>O grupo é Restaurante</p>
+@elseif ($group == Atacado)
+    <p>É atacado.</p>
+@else
+    <p>Não é Restaurante.</p>
+@endif
+
+@for ($i = 0; $i < 10; $i++)
+    <p>O número é {{$i}}</p>
+@endfor
+
+@forelse ($clients as $client)
+    <p>Nome do cliente: {{ $client }}</p>
+@empty
+    <p>Nenhum cliente cadastrado.</p>
+@endforelse
