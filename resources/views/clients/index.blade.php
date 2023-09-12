@@ -1,27 +1,40 @@
+@extends('layout')
 
-<br>
-<h1>Lista do Cliente</h1>
-<br>
-{{ Route::currentRouteName(); }}
-<br>
-{{-- Comentário do blade --}}
+@section('titulo')
+    <h1>Lista do Cliente</h1>
+@endsection
 
-{{ $group;}}
 
-@if ($group == 'Restaurante')
-    <p>O grupo é Restaurante</p>
-@elseif ($group == Atacado)
-    <p>É atacado.</p>
-@else
-    <p>Não é Restaurante.</p>
-@endif
+@section('barra-lateral')
+    {{-- @parent --}}
+    <h3>Valor Personalizado</h3>
+@endsection
 
-@for ($i = 0; $i < 10; $i++)
-    <p>O número é {{$i}}</p>
-@endfor
 
-@forelse ($clients as $client)
-    <p>Nome do cliente: {{ $client }}</p>
-@empty
-    <p>Nenhum cliente cadastrado.</p>
-@endforelse
+@section('conteudo')
+    
+    <br>
+    {{ Route::currentRouteName(); }}
+    <br>
+    {{-- Comentário do blade --}}
+
+    {{ $group;}}
+
+    @if ($group == 'Restaurante')
+        <p>O grupo é Restaurante</p>
+    @elseif ($group == Atacado)
+        <p>É atacado.</p>
+    @else
+        <p>Não é Restaurante.</p>
+    @endif
+
+    @for ($i = 0; $i < 10; $i++)
+        <p>O número é {{$i}}</p>
+    @endfor
+
+    @forelse ($clients as $client)
+        <p>Nome do cliente: {{ $client }}</p>
+    @empty
+        <p>Nenhum cliente cadastrado.</p>
+    @endforelse
+@endsection
