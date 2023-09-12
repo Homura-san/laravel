@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     #return view('welcome');
-    return view('layout');
+    return view('helpers');
 });
 
 # Rotas de estudo
@@ -45,6 +45,10 @@ Route::prefix('clients')->group(function () {
     Route::match(['post', 'put'] ,'save', function () {
         return 'Cliente criado com sucesso.';
     })->name('clients.save');
+
+    Route::get('edit/{id}/{name}', function($id, $name) {
+        return view('clients.form');
+    })-> name('clients.edit');
 
     // Route::get('{name}/{age}', function ($name, $age) {
     //     $html =  "Detalhes do cliente {$name}, {$age} anos.";
