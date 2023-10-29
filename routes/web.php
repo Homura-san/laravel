@@ -24,8 +24,13 @@ Route::redirect('curso', 'clients', 301);
 
 Route::prefix('clients')->group(function () {
     Route::get('/', function() {
+        // $joao = new \App\Models\Client;
+        // $joao->name = "Joao";
+        // $joao->email = "Joao@email.com";
+        // $joao->age = "19";
+        // $joao->save();
 
-        $clients = ['Maria', 'Joao', 'Joaquim'];
+        $clients = \App\Models\Client::get();
         $group = 'Restaurante';
 
         return view('clients.index', compact('clients', 'group'));

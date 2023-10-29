@@ -1,39 +1,23 @@
 @extends('layout')
 
 @section('titulo')
-    <h1>Lista do Cliente</h1>
+    <div class="navbar navbar-light bg-light">
+        <h1 class="navbar-brand">Lista do Cliente</h1>
+    </div> 
 @endsection
-
-
-@section('barra-lateral')
-    {{-- @parent --}}
-    <h3>Valor Personalizado</h3>
-@endsection
-
 
 @section('conteudo')
     
-    <br>
-    {{ Route::currentRouteName(); }}
-    <br>
     {{-- Comentário do blade --}}
 
-    {{ $group;}}
+    {{-- {{ $group;}} --}}
 
-    @if ($group == 'Restaurante')
-        <p>O grupo é Restaurante</p>
-    @elseif ($group == Atacado)
-        <p>É atacado.</p>
-    @else
-        <p>Não é Restaurante.</p>
-    @endif
-
-    @for ($i = 0; $i < 10; $i++)
-        <p>O número é {{$i}}</p>
-    @endfor
 
     @forelse ($clients as $client)
-        <p>Nome do cliente: {{ $client }}</p>
+        <p>Id do cliente: {{ $client->id }}</p>
+        <p>Nome do cliente: {{ $client->name }}</p>
+        <p>Email do cliente: {{ $client->email }}</p>
+        <p>Idade do cliente: {{ $client->age }}</p>
     @empty
         <p>Nenhum cliente cadastrado.</p>
     @endforelse
