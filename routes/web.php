@@ -23,18 +23,7 @@ Route::get('/', function () {
 Route::redirect('curso', 'clients', 301);
 
 Route::prefix('clients')->group(function () {
-    Route::get('/', function() {
-        // $joao = new \App\Models\Client;
-        // $joao->name = "Joao";
-        // $joao->email = "Joao@email.com";
-        // $joao->age = "19";
-        // $joao->save();
-
-        $clients = \App\Models\Client::get();
-        $group = 'Restaurante';
-
-        return view('clients.index', compact('clients', 'group'));
-    })-> name('clients.list'); // O nome da rota pode ser qualquer nome
+    Route::get('/', 'ClientController@index')-> name('clients.list'); // O nome da rota pode ser qualquer nome
     
     /*
         Quando se chama uma rota pelo nome, o endereço pode ser alterado
