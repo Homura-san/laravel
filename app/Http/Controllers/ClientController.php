@@ -5,41 +5,62 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ClientController extends Controller
+class CLientController extends Controller
 {
     /**
-     * Lista de clientes da loja
-     * @return void
+     * Display a listing of the resource.
      */
-    public function index(){
-        $clients = \App\Models\Client::get();
-
+    public function index()
+    {
+        $clients = \App\Models\CLient::get();
         return view('clients.index', compact('clients'));
     }
 
     /**
-     * Criar cliente
-     * @return void
+     * Show the form for creating a new resource.
      */
-    public function create() {
+    public function create()
+    {
         return view('clients.form');
     }
 
     /**
-     * Salvar cliente
-     * @return void
+     * Store a newly created resource in storage.
      */
-    public function save() {
-        return 'Cliente criado com sucesso.';
+    public function store(Request $request)
+    {
+        //
     }
 
     /**
-     * Editar cliente
-     * @param [type] $id
-     * @param [type] $name
-     * @return void
+     * Display the specified resource.
      */
-    public function edit($id, $name) {
-        return view('clients.form');
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
     }
 }

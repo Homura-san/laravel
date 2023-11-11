@@ -19,24 +19,5 @@ Route::get('/', function () {
     return view('index');
 });
 
-# Rotas de estudo
-
-Route::redirect('curso', 'clients', 301);
-
-Route::prefix('clients')->group(function () {
-    Route::get('/', [ClientController::class, 'index'])-> name('clients.list'); // O nome da rota pode ser qualquer nome
-    
-    /*
-        Quando se chama uma rota pelo nome, o endereço pode ser alterado
-        à vontade.
-    */
-    
-    Route::get('create/new', [ClientController::class, 'create'])-> name('form-clients');
-    
-    # match - aceita determinados verbos http, usar com cautela
-    # any  - aceita qualquer verbo http, mas deve ser usado em último caso
-    Route::match(['post', 'put'] ,'save', [ClientController::class, 'save'])->name('clients.save');
-
-    Route::get('edit/{id}/{name}', [ClientController::class, 'edit'])-> name('clients.edit');
-    
-});
+Route::resource('clients', ClientController::class);
+// Route::get('/', [ClientController::class, 'index'])-> name('clients.list');

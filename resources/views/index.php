@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,8 +13,9 @@
         <h5 class="card-title">Links</h5>
         </div>
         <div class="card-body">
-        <a class="card-link" href="<?= route('clients.list') ?> "> Lista de Clientes</a>
-        <a class="card-link" href="<?= route('form-clients') ?> "> Cadastro de Clientes</a>
+        <a class="card-link" href="<?= route('clients.index') ?> "> Lista de Clientes</a>
+        <a class="card-link" href="<?= route('clients.create') ?> "> Cadastro de Clientes</a>
+        <!--  -->
         </div>
         
         

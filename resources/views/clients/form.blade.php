@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,7 +22,7 @@
 
 
 @section('conteudo')
-  <form method='POST' action='<?= route('clients.save') ?>'>
+  <form method='POST' action=''>
     <div class="form-group">
     <input type='hidden' name='_token' value='<?=  csrf_token() ?> '>
       <!-- <input type='hidden' name='_method' value='PUT'> Como usar método put, delete, etc -->
@@ -35,7 +35,7 @@
 
   <br>
   <span class="badge badge-pill badge-primary">
-  <a href="<?= route('clients.list') ?> "> Lista de Clientes</a>
+  <a href="<?= route('clients.index') ?> "> Lista de Clientes</a>
   </span>
 @endsection
 
