@@ -19,5 +19,8 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::resource('clients', ClientController::class);
+Route::resource('clients', ClientController::class/*, ['only'=> [
+    'index', 'create', 'store
+]] */); # Método only define quais rotas poderão ser criadas. Except define quais rotas Não serão criadas
+
 // Route::get('/', [ClientController::class, 'index'])-> name('clients.list');
