@@ -14,14 +14,8 @@
         @yield('titulo')
         </div>
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-12">
                 @yield('conteudo')
-            </div>
-            <div class="col-md-3">
-                @section('barra-lateral')
-                    <h3>Barra Lateral</h3>
-                @show
-                
             </div>
         </div>
     </div>

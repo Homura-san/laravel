@@ -2,7 +2,7 @@
 
 @section('titulo')
     <div class="navbar navbar-light bg-light">
-        <h1 class="navbar-brand">Lista do Cliente</h1>
+        <h1 class="navbar-brand">Lista de Clientes</h1>
     </div> 
 @endsection
 
@@ -11,14 +11,39 @@
     {{-- Comentário do blade --}}
 
     {{-- {{ $group;}} --}}
+        
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Acoes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        @forelse ($clients as $client)
+                            <tr>
+                                <td>{{ $client->id }}</td>
+                                <td> <a href="{{ route('clients.show', $client->id) }}">{{ $client->name }}</a></td>
+                                <td>{{ $client->email }}</td>
+                                <td></td>
+                            </tr>
+                            
+                        @empty
+                            <tr>
+                                <td>Nenhum cliente cadastrado.</td>
+                            </tr>
+                        @endforelse
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-
-    @forelse ($clients as $client)
-        <p>Id do cliente: {{ $client->id }}</p>
-        <p>Nome do cliente: {{ $client->name }}</p>
-        <p>Email do cliente: {{ $client->email }}</p>
-        <p>Idade do cliente: {{ $client->age }}</p>
-    @empty
-        <p>Nenhum cliente cadastrado.</p>
-    @endforelse
+    </div>
+    
 @endsection
