@@ -1,44 +1,16 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-     <meta charset="UTF-8">
-     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-     <title>Document</title>
-</head>
-<body>
-@extends('layout')
+<div class="form-group">
+  <label for="name" class="col-sm-2 control-label">Nome</label>
+  <input type="text" class="form-control" id="name" value="{{ @$client->name }}">
+</div>
 
-@section('titulo')
-  <h2>Criar cliente</h2>;
-@endsection
+<div class="form-group">
+  <label for="mail" class="col-sm-2 control-label">Email</label>
+  <input type="email" class="form-control" id="mail" value="{{ @$client->email }}">
+</div>
 
+<div class="form-group">
+  <label for="age" class="col-sm-2 control-label">Idade</label>
+  <input type="number" class="form-control" id="age" value="{{ @$client->age }}">
+</div>
 
-@section('barra-lateral')
-    {{-- @parent --}}
-    <h3>Valor Personalizado</h3>
-@endsection
-
-
-@section('conteudo')
-  <form method='POST' action=''>
-    <div class="form-group">
-    <input type='hidden' name='_token' value='<?=  csrf_token() ?> '>
-      <!-- <input type='hidden' name='_method' value='PUT'> Como usar método put, delete, etc -->
-      <input class="form-control" placeholder='insira seu nome'> <br>
-      <input class="form-control" placeholder='insira sua idade'> <br>
-      <button class="btn btn-success">Enviar</button>
-    </div>
-      
-  </form>
-
-  <br>
-  <span class="badge badge-pill badge-primary">
-  <a href="<?= route('clients.index') ?> "> Lista de Clientes</a>
-  </span>
-@endsection
-
-</body>
-</html>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script> 
+<button class="btn btn-success">Salvar</button>

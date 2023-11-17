@@ -21,7 +21,7 @@ class CLientController extends Controller
      */
     public function create()
     {
-        return view('clients.form');
+        return view('clients.create');
     }
 
     /**
@@ -29,7 +29,7 @@ class CLientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return view('clients.create');
     }
 
     /**
@@ -46,7 +46,8 @@ class CLientController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $client = \App\Models\Client::find($id);
+        return view('clients.edit', compact('client'));
     }
 
     /**

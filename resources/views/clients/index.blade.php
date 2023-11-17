@@ -30,7 +30,7 @@
                                 <td>{{ $client->id }}</td>
                                 <td> <a href="{{ route('clients.show', $client->id) }}">{{ $client->name }}</a></td>
                                 <td>{{ $client->email }}</td>
-                                <td></td>
+                                <td><a href="{{ route('clients.edit', $client->id) }}">Editar</a></td>
                             </tr>
                             
                         @empty
@@ -41,6 +41,7 @@
                         
                     </tbody>
                 </table>
+                <a href="{{route('clients.create')}}">Criar Cliente</a>
             </div>
         </div>
 
