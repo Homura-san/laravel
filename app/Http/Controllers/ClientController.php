@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,7 @@ class CLientController extends Controller
      */
     public function index()
     {
-        $clients = \App\Models\CLient::get();
+        $clients = CLient::get();
         return view('clients.index', compact('clients'));
     }
 
@@ -29,7 +30,13 @@ class CLientController extends Controller
      */
     public function store(Request $request)
     {
-        return view('clients.create');
+        $client = new Client;
+        $client->name = $request->input('name');
+        $client->email = $request->input('email');
+        $client->age = $request->input('age');
+        $client->save();
+
+        return redirect()->route('clients.index');
     }
 
     /**
@@ -37,7 +44,7 @@ class CLientController extends Controller
      */
     public function show(string $id)
     {
-        $client = \App\Models\Client::find($id);
+        $client = Client::findOrFail($id);
         return view('clients.show', compact('client'));
     }
 
@@ -46,7 +53,7 @@ class CLientController extends Controller
      */
     public function edit(string $id)
     {
-        $client = \App\Models\Client::find($id);
+        $client = Client::findOrFail($id);
         return view('clients.edit', compact('client'));
     }
 
@@ -55,7 +62,13 @@ class CLientController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $client = Client::findOrFail($id);
+        $client->name = $request->input('name');
+        $client->email = $request->input('email');
+        $client->age = $request->input('age');
+        $client->save();
+
+        return redirect()->route('clients.index');
     }
 
     /**
