@@ -1,9 +1,8 @@
 @extends('layout')
 
 @section('titulo')
-    <div class="navbar navbar-light bg-light">
-        <h1 class="navbar-brand">Lista de Clientes</h1>
-    </div> 
+    Lista de Clientes
+
 @endsection
 
 @section('conteudo')

@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('titulo')
-    <h1>Editar Cliente</h1>
+    Editar Cliente
 @endsection
 
 @section('conteudo')

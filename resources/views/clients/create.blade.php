@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('titulo')
-    <h1>Novo Cliente</h1>
+    Novo Cliente
 @endsection
 
 @section('conteudo')
