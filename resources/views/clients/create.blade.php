@@ -8,7 +8,7 @@
 
     <div class="row">
         <div class="col-md-8 col-offset-2">
-            <form action="{{route('clients.store')}}" method="post" class="form-horizontal">
+            <form class="form-horizontal" method="post" enctype="multipart/form-data" action="{{route('clients.store')}}">
                 {{ csrf_field() }}
                 
                 @include('clients.form')

@@ -8,7 +8,7 @@
 
     <div class="row">
         <div class="col-md-8 col-offset-2">
-            <form action="{{route('clients.update', $client->id)}}" method="post" class="form-horizontal">
+            <form class="form-horizontal" method="post" enctype="multipart/form-data" action="{{route('clients.update', $client->id)}}">
                 {{ csrf_field() }}
                 {{ method_field('PUT') }}
                 
