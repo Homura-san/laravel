@@ -30,6 +30,9 @@ class CLientController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => ['required', 'max:100', 'min:3']
+        ]);
         $client = new Client;
         
         if ($request->hasFile('photo')){

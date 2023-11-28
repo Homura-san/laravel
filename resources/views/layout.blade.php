@@ -10,6 +10,16 @@
 </head>
 <body>
     <div class="container">
+
+      @if ($errors->any())
+        <div class="alert alert-danger">
+          <ul>
+            @foreach ($errors->all() as $error)
+                <li> {{  $error }} </li>
+            @endforeach
+          </ul>
+        </div>
+      @endif
         <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
             <a class="navbar-brand" href="#">
                 @yield('titulo')
