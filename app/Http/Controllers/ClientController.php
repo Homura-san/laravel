@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+// use Illuminate\Validation\Validator;
+use Illuminate\Support\Facades\Validator;
 use App\Models\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -73,6 +75,13 @@ class CLientController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $validation = Validator::make($request->all(), [
+            'name' => ['required', 'max:100', 'min:3'],
+            'email' => ['required', 'email', 'unique:clients'],
+            'age' => ['required', 'integer'],
+            'photo' => ['mimes:jpeg,bmp,png']
+        ])->validate();
+
         $client = Client::findOrFail($id);
 
         if ($request->hasFile('photo')){
