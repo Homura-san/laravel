@@ -29,7 +29,16 @@
                                 <td>{{ $client->id }}</td>
                                 <td> <a href="{{ route('clients.show', $client->id) }}">{{ $client->name }}</a></td>
                                 <td>{{ $client->email }}</td>
-                                <td><a href="{{ route('clients.edit', $client->id) }}">Editar</a></td>
+                                <td>
+                                    <a class="btn btn-success" href="{{ route('clients.edit', $client->id) }}">Editar</a>
+                                    <form style="display: inline" action="{{ route('clients.destroy', $client->id) }}" method="post">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+                                        <button class="btn btn-danger" type="submit"
+                                        onclick="return confirm('Tem certeza que deseja remover o cliente?')">Deletar</button>
+                                    </form>
+                                </td>
+                                
                             </tr>
                             
                         @empty
