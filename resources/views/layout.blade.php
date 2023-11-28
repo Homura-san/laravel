@@ -51,3 +51,6 @@
     </div>
 </body>
 </html>
+
+
+{{-- {{ Traduzir validações: https://github.com/lucascudo/laravel-pt-BR-localization/tree/master }} --}}
