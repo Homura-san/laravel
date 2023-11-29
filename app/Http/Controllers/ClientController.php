@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\ClientRequest;
 
 class CLientController extends Controller
 {
@@ -30,14 +31,8 @@ class CLientController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ClientRequest $request)
     {
-        $request->validate([
-            'name' => ['required', 'max:100', 'min:3'],
-            'email' => ['required', 'email', 'unique:clients'],
-            'age' => ['required', 'integer'],
-            'photo' => ['required', 'mimes:jpeg,bmp,png']
-        ]);
         $client = new Client;
         
         if ($request->hasFile('photo')){
