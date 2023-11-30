@@ -14,6 +14,13 @@ class ClientRequest extends FormRequest
         return true;
     }
 
+    public function sanitize(){
+        $data = $this->all();
+        $data['name'] = str_replace('-', ' ', $data['name']);
+        
+        $this->replace($data);
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -21,6 +28,7 @@ class ClientRequest extends FormRequest
      */
     public function rules(): array
     {
+        $this->sanitize();
         return [
             'name' => ['required', 'max:100', 'min:3'],
             'email' => ['required', 'email', 'unique:clients'],
@@ -28,6 +36,16 @@ class ClientRequest extends FormRequest
             'photo' => ['required', 'mimes:jpeg,bmp,png']
         ];
     }
+
+
+    // public function withValidator($validator){
+    //     $validator->after(function($validator){
+    //         if(strpos($this->name, '-')){
+    //             $validator->errors()->add('name', 'O campo nome não pode ter traço.');
+    //         }
+    //     });
+    // }
+    
 
     /**
      * Define descrições manuais das regras de validação
