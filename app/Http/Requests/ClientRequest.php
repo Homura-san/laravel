@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\Dash;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ClientRequest extends FormRequest
@@ -28,9 +29,9 @@ class ClientRequest extends FormRequest
      */
     public function rules(): array
     {
-        $this->sanitize();
+        #$this->sanitize();
         return [
-            'name' => ['required', 'max:100', 'min:3'],
+            'name' => ['required', 'max:100', 'min:3', new Dash],
             'email' => ['required', 'email', 'unique:clients'],
             'age' => ['required', 'integer'],
             'photo' => ['required', 'mimes:jpeg,bmp,png']
