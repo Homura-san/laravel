@@ -14,8 +14,14 @@ class CLientController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $request->session()->put('cursos', ['Laravel', 'slim']);
+        $request->session()->push('cursos', 'Silex');
+
+        $request->session()->flash('aviso', 'Novo cliente cadastrado');
+        $request->session()->flash('tipo', 'Sucesso');
+
         $clients = CLient::get();
         return view('clients.index', compact('clients'));
     }
@@ -23,8 +29,13 @@ class CLientController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
+        #$request->session()->reflash();
+        #$request->session()->keep(['aviso']);
+        echo '<pre>';
+        print_r($request->session()->all());
+        echo '</pre>';
         return view('clients.create');
     }
 
