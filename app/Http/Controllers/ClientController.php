@@ -16,12 +16,6 @@ class CLientController extends Controller
      */
     public function index(Request $request)
     {
-        $request->session()->put('cursos', ['Laravel', 'slim']);
-        $request->session()->push('cursos', 'Silex');
-
-        $request->session()->flash('aviso', 'Novo cliente cadastrado');
-        $request->session()->flash('tipo', 'Sucesso');
-
         $clients = CLient::get();
         return view('clients.index', compact('clients'));
     }
@@ -31,11 +25,6 @@ class CLientController extends Controller
      */
     public function create(Request $request)
     {
-        #$request->session()->reflash();
-        #$request->session()->keep(['aviso']);
-        echo '<pre>';
-        print_r($request->session()->all());
-        echo '</pre>';
         return view('clients.create');
     }
 
@@ -53,7 +42,11 @@ class CLientController extends Controller
         $client->name = $request->input('name');
         $client->email = $request->input('email');
         $client->age = $request->input('age');
-        $client->save();
+        if ($client->save()){
+            session()->flash('success', 'Cliente cadastrado com sucesso');
+        } else {
+            session()->flash('error', 'Erro ao cadastrar o cliente.');
+        }
 
         return redirect()->route('clients.index');
     }
@@ -97,7 +90,13 @@ class CLientController extends Controller
         $client->name = $request->input('name');
         $client->email = $request->input('email');
         $client->age = $request->input('age');
-        $client->save();
+
+        if ($client->save()){
+            session()->flash('success', 'Cliente atualizado com sucesso');
+        } else {
+            session()->flash('error', 'Erro ao atualizar o cliente.');
+        }
+        
 
         return redirect()->route('clients.index');
     }
@@ -110,7 +109,10 @@ class CLientController extends Controller
         $client = Client::findOrFail($id);
 
         if ($client->delete()){
-            return redirect()->route('clients.index');
-        };
+            session()->flash('success', 'Cliente deletado com sucesso');
+        } else {
+            session()->flash('error', 'Erro ao deletar o cliente.');
+        }
+        return redirect()->route('clients.index');
     }
 }
