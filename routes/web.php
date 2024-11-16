@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ToDoTasksController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,13 +15,17 @@ use App\Http\Controllers\ClientController;
 |
 */
 
+# Método only define quais rotas poderão ser criadas. Except define quais rotas Não serão criadas
+
+// Route::get('/', [ClientController::class, 'index'])-> name('clients.list');
+
 Route::get('/', function () {
     #return view('welcome');
     return view('index');
 });
 
-Route::resource('clients', ClientController::class/*, ['only'=> [
-    'index', 'create', 'store
-]] */); # Método only define quais rotas poderão ser criadas. Except define quais rotas Não serão criadas
+Route::resource('clients', ClientController::class); 
 
-// Route::get('/', [ClientController::class, 'index'])-> name('clients.list');
+Route::get('tasks/add/{id}', [ToDoTasksController::class, 'store']);
+
+Route::get('tasks/delete/{id}', [ToDoTasksController::class, 'destroy']);

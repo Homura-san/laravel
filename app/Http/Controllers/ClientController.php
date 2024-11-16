@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-// use Illuminate\Validation\Validator;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redis;
 use App\Models\Client;
@@ -17,8 +16,11 @@ class CLientController extends Controller
      */
     public function index(Request $request)
     {
-        $request->session()->regenerate();
-        session(['cursos' => ['Laravel', 'Slim']]);
+        // $request->session()->regenerate();
+        // session(['cursos' => ['Laravel', 'Slim']]);
+
+        var_dump(session('todotasks'));
+
         $clients = CLient::get();
         return view('clients.index', compact('clients'));
     }
